@@ -16,6 +16,13 @@ fun main() {
         list.push(3).push(2).push(1)
         println(list)
     }
+    "append" example {
+        val list = LinkedList<Int>()
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        println(list)
+    }
 }
 
 infix fun String.example(function: () -> Unit) {
