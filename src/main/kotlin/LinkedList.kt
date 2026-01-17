@@ -8,10 +8,20 @@ class LinkedList<T:Any>{
     fun isEmpty(): Boolean = size == 0
 
     override fun toString(): String {
-        if(isEmpty()){
-            return "Empty list"
+        return if(isEmpty()){
+            "Empty list"
         }else{
-            return head.toString()
+            head.toString()
         }
+    }
+
+    fun push(value: T){
+        //Create a node with new value and points
+        // to the node that was previously the head
+        head = Node(value = value, next = head)
+        if(tail == null){
+            tail = head
+        }
+        size++
     }
 }
