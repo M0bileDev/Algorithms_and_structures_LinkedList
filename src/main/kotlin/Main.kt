@@ -11,9 +11,14 @@ fun main() {
 
         println(node1)
     }
+    "push" example {
+        val list = LinkedList<Int>()
+        list.push(3).push(2).push(1)
+        println(list)
+    }
 }
 
 infix fun String.example(function: () -> Unit) {
-    println(this)
+    println("=== Example of $this ===")
     function()
 }
