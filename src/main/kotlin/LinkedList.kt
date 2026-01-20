@@ -1,9 +1,10 @@
 package org.example
 
-class LinkedList<T : Any> {
+class LinkedList<T : Any> : Iterable<T> {
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
-    private var size = 0
+    var size = 0
+        private set
 
     fun isEmpty(): Boolean = size == 0
 
@@ -78,7 +79,7 @@ class LinkedList<T : Any> {
     fun removeLast(): T? {
         val head = head ?: return null
 
-        if(head.next == null) return pop()
+        if (head.next == null) return pop()
 
         size--
 
@@ -86,7 +87,7 @@ class LinkedList<T : Any> {
         var current = head
 
         var next = current.next
-        while(next != null){
+        while (next != null) {
             prev = current
             current = next
             next = current.next
@@ -97,18 +98,22 @@ class LinkedList<T : Any> {
         return current.value
     }
 
-    fun removeAfter(node: Node<T>): T?{
+    fun removeAfter(node: Node<T>): T? {
         val result = node.next?.value
 
-        if(node.next == tail){
+        if (node.next == tail) {
             tail = node
         }
 
-        if(node.next != null){
+        if (node.next != null) {
             size--
         }
 
         node.next = node.next?.next
         return result
+    }
+
+    override fun iterator(): Iterator<T> {
+        return LinkedListIterator(this)
     }
 }
