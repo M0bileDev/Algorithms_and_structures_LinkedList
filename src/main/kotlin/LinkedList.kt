@@ -38,11 +38,11 @@ class LinkedList<T : Any> {
         size++
     }
 
-    fun nodeAt(index: Int): Node<T>?{
+    fun nodeAt(index: Int): Node<T>? {
         var currentNode = head
         var currentIndex = 0
 
-        while(currentNode != null && currentIndex < index){
+        while (currentNode != null && currentIndex < index) {
             currentNode = currentNode.next
             currentIndex++
         }
@@ -50,8 +50,8 @@ class LinkedList<T : Any> {
         return currentNode
     }
 
-    fun insert(value: T, afterNode: Node<T>): Node<T>{
-        if(tail == afterNode){
+    fun insert(value: T, afterNode: Node<T>): Node<T> {
+        if (tail == afterNode) {
             append(value)
             return tail!!
         }
@@ -60,6 +60,19 @@ class LinkedList<T : Any> {
         afterNode.next = newNode
         size++
         return newNode
+    }
+
+    fun pop(): T? {
+        if (isEmpty()) return null
+
+        val result = head?.value
+        head = head?.next
+        size--
+        if (isEmpty()) {
+            tail = null
+        }
+
+        return result
     }
 
 }
