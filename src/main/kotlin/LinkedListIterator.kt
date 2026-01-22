@@ -2,7 +2,7 @@ package org.example
 
 class LinkedListIterator<T : Any>(
     private val list: LinkedList<T>
-) : Iterator<T> {
+) : MutableIterator<T> {
 
     private var index = 0
     private var lastNode: Node<T>? = null
@@ -12,15 +12,26 @@ class LinkedListIterator<T : Any>(
     }
 
     override fun next(): T {
-        if(index >= list.size) throw IndexOutOfBoundsException()
+        if (index >= list.size) throw IndexOutOfBoundsException()
 
-        lastNode = if(index == 0){
+        lastNode = if (index == 0) {
             list.nodeAt(0)
-        }else{
+        } else {
             lastNode?.next
         }
 
         index++
         return lastNode!!.value
+    }
+
+    override fun remove() {
+        if (index == 1) {
+            list.pop()
+        } else {
+            val prevNode = list.nodeAt(index - 2) ?: return
+            list.removeAfter(prevNode)
+            lastNode = prevNode
+        }
+        index--
     }
 }
