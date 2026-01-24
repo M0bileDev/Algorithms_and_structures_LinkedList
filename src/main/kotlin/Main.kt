@@ -126,7 +126,16 @@ fun main() {
         println(list)
     }
 
-
+    "print reverse order" example {
+        val list: LinkedList<Int> = LinkedList()
+        list.add(1)
+        list.add(2)
+        list.add(3)
+        println(list)
+        
+        println("Print in reverse order")
+        list.printInReverse()
+    }
 }
 
 infix fun String.example(function: () -> Unit) {
