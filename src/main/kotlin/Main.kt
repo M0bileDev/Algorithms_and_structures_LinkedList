@@ -136,6 +136,19 @@ fun main() {
         println("Print in reverse order")
         list.printInReverse()
     }
+
+    "The item in the middle" example {
+        val list: LinkedList<Int> = LinkedList()
+        list.add(1)
+        list.add(2)
+        list.add(3)
+//        list.add(4)
+        println(list)
+
+        println("Item in the middle")
+        val middleNode = list.findItemInTheMiddle()
+        print(middleNode?.value)
+    }
 }
 
 infix fun String.example(function: () -> Unit) {
