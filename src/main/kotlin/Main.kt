@@ -149,6 +149,20 @@ fun main() {
         val middleNode = list.findItemInTheMiddle()
         print(middleNode?.value)
     }
+
+    "Reverse a linked list" example {
+        val list: LinkedList<Int> = LinkedList()
+        list.add(1)
+        list.add(2)
+        list.add(3)
+        list.add(4)
+        list.add(5)
+        println(list)
+
+        println("Print reversed linked list")
+        list.reverse()
+        print(list)
+    }
 }
 
 infix fun String.example(function: () -> Unit) {
