@@ -17,3 +17,20 @@ fun <T : Any> LinkedList<T>.findItemInTheMiddle(): Node<T>? {
     val middleIndex = size / 2
     return nodeAt(middleIndex)
 }
+
+fun <T : Any> LinkedList<T>.reverse() {
+    val oldSize = size -1
+    var counter = size - 2
+
+    while (counter > -1) {
+        val node = nodeAt(counter)
+        append(node!!.value)
+        counter--
+    }
+
+    counter = 0
+    while (counter < oldSize) {
+        pop()
+        counter++
+    }
+}
